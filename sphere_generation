@@ -1,0 +1,26 @@
+r = randn(3,15000); % Use a large n
+r = bsxfun(@rdivide,r,sqrt(sum(r.^2,1)));
+x = r(1,:);
+y = r(2,:);
+z = r(3,:);
+
+figure
+scatter3(x,y,z)
+
+
+
+randomInt = randperm(length(r),1);
+hold on;
+randomPoint = [ x(randomInt); y(randomInt); z(randomInt)];
+scatter3(randomPoint(1),randomPoint(2),randomPoint(3),'r','filled');
+
+%randomPoint = scatter3(x(randomInt),y(randomInt),z(randomInt),'-r','MarkerSize',12);
+C = dot(randomPoint,gravity);
+gravity = [0; 0; -9.8];
+%figure
+%sphere(200)
+
+
+
+
+%sph2cart spherical to cartesian pointsm
